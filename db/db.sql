@@ -1,0 +1,26 @@
+create DATABASE springelearning;
+use springelearning;
+
+
+CREATE TABLE IF NOT EXISTS users (
+id VARCHAR(100) NOT NULL PRIMARY KEY,
+email VARCHAR(100) NOT NULL,
+fullname VARCHAR(100) NOT NULL,
+password VARCHAR(100) NOT NULL,
+avatar VARCHAR(255),
+phone VARCHAR(20),
+address VARCHAR(255),
+personType VARCHAR(255),
+website VARCHAR(255),
+facebook VARCHAR(255),
+role_id VARCHAR (100) NOT NULL, CONSTRAINT
+fk_user_role FOREIGN KEY (role_id)
+REFERENCES roles(id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS roles (
+id VARCHAR(100) NOT NULL,
+name VARCHAR(30) NOT NULL,
+description VARCHAR(255),
+CONSTRAINT pk_role PRIMARY KEY(id)
+);

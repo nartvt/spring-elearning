@@ -12,7 +12,11 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.elearning.program.repository","com.elearning.program.service", "com.elearning.program.controller", "com.elearning.program.admin.controller" })
+@ComponentScan(basePackages = {"com.elearning.program.repository",
+		"com.elearning.program.service", 
+		"com.elearning.program.entity", 
+		"com.elearning.program.controller", 
+		"com.elearning.program.admin.controller","com.elearning.program.validator" })
 public class WebMvcConfig implements WebMvcConfigurer {
 //  public void configureViewResolvers(ViewResolverRegistry viewResolverRegistry) {
 //    viewResolverRegistry.jsp("/WEB-INF/views/", ".jsp");

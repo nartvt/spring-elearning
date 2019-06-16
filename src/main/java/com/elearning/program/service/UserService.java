@@ -2,14 +2,14 @@ package com.elearning.program.service;
 
 import java.util.List;
 
-import com.elearning.program.entity.User;
+import com.elearning.program.dto.UserDTO;
 
 public interface UserService {
-  List<User> findAll();
-  boolean save(User user);
-  User findById(String id);
+  List<UserDTO> findAll();
+  boolean save(UserDTO user);
+  UserDTO findById(String id);
   
   boolean delete(String id);
-  boolean update(User user);
+  boolean update(UserDTO user);
 
 }

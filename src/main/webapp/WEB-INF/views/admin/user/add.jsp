@@ -36,13 +36,14 @@
                 </div>
                 <div class="form-group">
                   <label>Mật khẩu</label>
-                  <mvc:input type="password" path="password"         cssClass="form-control" />
+                  <mvc:input type="password" path="password"   cssClass="form-control" />
                   <mvc:errors path="password" cssClass="text-danger" />
                 </div>
-                <%-- <div class="form-group">
-									<label>Nhập lại mật khẩu</label> 
-									<mvc:input type="password" path="confirm" cssClass="form-control" />
-								</div> --%>
+                <div class="form-group">
+					<label>Nhập lại mật khẩu</label> 
+					<mvc:input type="password" path="passwordConfirm" cssClass="form-control" />
+					<mvc:errors path="passwordConfirm" cssClass="text-danger" />
+				</div> 
                 <div class="form-group">
                   <label>Loại người dùng</label> 
                    <mvc:select path="personType" id="personType"  class="form-control">

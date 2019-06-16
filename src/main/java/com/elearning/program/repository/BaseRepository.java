@@ -1,8 +1,9 @@
 package com.elearning.program.repository;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface BaseRepository<T> {
+public interface BaseRepository<T> extends Serializable{
   List<T> findAll();
 
   T findById(String id);
@@ -11,5 +12,5 @@ public interface BaseRepository<T> {
 
   boolean delete(String id);
   
-  boolean update(T t);
+ // boolean update(T t);
 }

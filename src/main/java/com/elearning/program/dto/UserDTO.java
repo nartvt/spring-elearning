@@ -1,27 +1,23 @@
-package com.elearning.program.entity;
+package com.elearning.program.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
-@Entity(name = "users")
-public class User {
+import org.hibernate.validator.constraints.Length;
 
-	@Id
+public class UserDTO {
+
 	private String id;
 
-	// @NotBlank(message = "Email chua duoc nhap")
-	// @Email(message = "Email khong dung dinh dang")
+	 @NotBlank(message = "Email chua duoc nhap")
+	 @Email(message = "Email khong dung dinh dang")
 	private String email;
 
-	// @NotBlank(message = "Ho Ten chua duoc nhap")
+	 @NotBlank(message = "Ho Ten chua duoc nhap")
 	private String fullname;
 
-	// @NotBlank(message = "Mat khau chua duoc nhap")
-	// @Length(min = 6, max = 16, message = "Mat khau it nhat 6 ki tu va toi da 16 ki tu")
+	 @NotBlank(message = "Mat khau chua duoc nhap")
+	 @Length(min = 6, max = 16, message = "Mat khau it nhat 6 ki tu va toi da 16 ki tu")
 	private String password;
 
 	private String personType;
@@ -30,19 +26,14 @@ public class User {
 	private String address;
 	private String website;
 	private String facebook;
-	@Transient
 	private String passwordConfirm;
 	
-	@Column(name = "role_id")
 	private String roleId;
-
-	@ManyToOne
-	@JoinColumn(name = "role_id" , insertable = false, updatable = false)
-	private Role role;
-	public User() {
+ 
+	public UserDTO() {
 	}
 
-	public User(String id, String email, String fullname, String password, String avatar, String phone, String address,
+	public UserDTO(String id, String email, String fullname, String password, String avatar, String phone, String address,
 			String personType, String website, String facebook, String roleId) {
 		this.id = id;
 		this.email = email;
@@ -57,14 +48,7 @@ public class User {
 		this.roleId = roleId;
 	}
 
-	public Role getRole() {
-		return role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
+ 
 	public String getId() {
 		return id;
 	}

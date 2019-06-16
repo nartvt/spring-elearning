@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.elearning.program.entity.User;
 import com.elearning.program.service.RoleService;
 import com.elearning.program.service.UserService;
+import com.elearning.program.validator.PassWordValidation;
 
 @Controller
 @RequestMapping("admin/user")
@@ -28,6 +29,9 @@ public class AdminUserController {
   @Autowired
   private RoleService roleService;
 
+  @Autowired
+  private PassWordValidation passwordValidation;
+  
   @GetMapping("")
   public String index(ModelMap model) {
     List<User> users = userService.findAll();
@@ -47,6 +51,8 @@ public class AdminUserController {
   public String add(ModelMap model,
       @Valid @ModelAttribute("user") User user,
     BindingResult error) {
+	  
+	  passwordValidation.validate(user, error);
     if(error.hasErrors()) {
       model.addAttribute("roles",roleService.findAll());
       return "userAdd";
