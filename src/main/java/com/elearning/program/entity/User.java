@@ -1,6 +1,5 @@
 package com.elearning.program.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,32 +11,22 @@ public class User {
 
 	@Id
 	private String id;
-
-	// @NotBlank(message = "Email chua duoc nhap")
-	// @Email(message = "Email khong dung dinh dang")
 	private String email;
-
-	// @NotBlank(message = "Ho Ten chua duoc nhap")
 	private String fullname;
-
-	// @NotBlank(message = "Mat khau chua duoc nhap")
-	// @Length(min = 6, max = 16, message = "Mat khau it nhat 6 ki tu va toi da 16 ki tu")
 	private String password;
-
 	private String personType;
 	private String avatar;
 	private String phone;
 	private String address;
 	private String website;
 	private String facebook;
+	private String roleId;
+	
 	@Transient
 	private String passwordConfirm;
-	
-	@Column(name = "role_id")
-	private String roleId;
 
 	@ManyToOne
-	@JoinColumn(name = "role_id" , insertable = false, updatable = false)
+	@JoinColumn(name = "roleId" , insertable = false, updatable = false)
 	private Role role;
 	public User() {
 	}

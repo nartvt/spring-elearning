@@ -15,157 +15,87 @@ import com.elearning.program.repository.UserRepository;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Autowired
-	private SessionFactory sessionFactory;
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+  /**
+   * 
+   */
+  @Autowired
+  private SessionFactory sessionFactory;
 
- 
+  private Session session;
 
+  private Session session() {
 
-	public UserRepositoryImpl() {
-	 
-	}
+    try {
+      session = sessionFactory.getCurrentSession();
+    } catch (HibernateException e) {
+      session = sessionFactory.openSession();
+    }
 
-	@Override
-	public List<User> findAll() {
-		Session session=null;
-		try 
-		{
-		    //Step-2: Implementation
-		    session = sessionFactory.getCurrentSession();
-		} 
-		catch (HibernateException e) 
-		{
-		    //Step-3: Implementation
-		    session = sessionFactory.openSession();
-		}
-		try {
-//			 session.beginTransaction();
-			Query<User> query = session.createQuery("FROM users", User.class);
-//			 session.getTransaction().commit();
-			List<User> users = query.getResultList();
-			 session.flush();
-			 session.close();
-			return users;
-		} catch (RuntimeException e) {
-//			 session.getTransaction().rollback();
-			e.printStackTrace();
-		}
-//		finally {
-//			session.flush();
-//			session.close();
-//		}
-		return null;
-	}
+    return session;
+  }
+  private void closeSession(Session session) {
+    if(session!=null) {
+      session.flush();
+      session.close();
+    }
+  }
 
-	@Override
-	public User findById(String id) {
-		Session session=null;
-		try 
-		{
-		    //Step-2: Implementation
-		    session = sessionFactory.getCurrentSession();
-		} 
-		catch (HibernateException e) 
-		{
-		    //Step-3: Implementation
-		    session = sessionFactory.openSession();
-		}
-		User user = session.find(User.class, id);
-		// session.getTransaction().commit();
-		return user;
-//		for (User user : users) {
-//			if (user.getId().equalsIgnoreCase(id)) {
-//				return user;
-//			}
-//		}
-//		return null;
-	}
+  public UserRepositoryImpl() {
 
-	@Override
-	public boolean save(User user) {
-		Session session=null;
-		try 
-		{
-		    //Step-2: Implementation
-		    session = sessionFactory.getCurrentSession();
-		} 
-		catch (HibernateException e) 
-		{
-		    //Step-3: Implementation
-		    session = sessionFactory.openSession();
-		}
+  }
 
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(user);
-			session.getTransaction().commit();
-			return true;
-		} catch (RuntimeException e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		} 
-		finally {
-			session.flush();
-			session.close();
-		}
-		return false;
-		
-	}
+  public List<User> findAll() {
+    Session session = this.session();
 
-	@Override
-	public boolean delete(String id) {
-		Session session=null;
-		try 
-		{
-		    //Step-2: Implementation
-		    session = sessionFactory.getCurrentSession();
-		} 
-		catch (HibernateException e) 
-		{
-		    //Step-3: Implementation
-		    session = sessionFactory.openSession();
-		}
-		User user = session.find(User.class,id);
+    try {
+      String sqlString = "FROM users";
+      Query<User> query = session.createQuery(sqlString, User.class);
+      List<User> users = query.getResultList();
+      return users;
+    } catch (RuntimeException e) {
+      this.closeSession(session);
+      e.printStackTrace();
+    }
+    return null;
+  }
 
-		try {
-			session.beginTransaction();
-			session.delete(user);
-			session.getTransaction().commit();
-			return true;
-		} catch (RuntimeException e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		} finally {
-			session.flush();
-			session.close();
-		}
-		return false;
-	}
+  @Override
+  public User findById(String id) {
+    Session session = this.session();
+    User user = session.find(User.class, id);
+    return user;
 
-//	@Override
-//	public boolean update(User user) {
-//		for (User u : users) {
-//			if (u.getId().equalsIgnoreCase(user.getId())) {
-//				u.setEmail(user.getEmail());
-//				u.setFullname(user.getFullname());
-//				u.setPassword(user.getPassword());
-//				u.setPassword(user.getPassword());
-//				u.setPersonType(user.getPersonType());
-//				u.setAvatar(user.getAvatar());
-//				u.setPhone(user.getPhone());
-//				u.setAddress(user.getAddress());
-//				u.setWebsite(user.getWebsite());
-//				u.setFacebook(user.getFacebook());
-//				u.setRoleId(user.getRoleId());
-//				return true;
-//
-//			}
-//		}
-//		return false;
-//	}
+  }
+
+  @Override
+  public boolean save(User user) {
+    Session session = this.session();
+    try {
+      session.saveOrUpdate(user);
+      return true;
+    } catch (RuntimeException e) {
+      e.printStackTrace();
+    }
+    return false;
+
+  }
+
+  @Override
+  public boolean delete(String id) {
+    Session session = this.session();
+    User user = session.find(User.class, id);
+
+    try {
+      session.delete(user);
+      return true;
+    } catch (RuntimeException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
 
 }

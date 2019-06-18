@@ -14,131 +14,84 @@ import com.elearning.program.repository.RoleRepository;
 
 @Repository
 public class RoleRepositoryImpl implements RoleRepository {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Autowired
-	private SessionFactory sessionFactory;
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+  /**
+   * 
+   */
+  @Autowired
+  private SessionFactory sessionFactory;
 
-//  private List<Role> roles;
-//
-//  public RoleRepositoryImpl() {
-//    roles = new ArrayList<Role>();
-//    Role  role = new Role();
-//    role.setId("R01");
-//    role.setName("CEO");
-//    role.setDescription("CEO of Software Company");
-//    
-//    Role  role2 = new Role();
-//    role2.setId("R02");
-//    role2.setName("CEO");
-//    role2.setDescription("CEO of Software Company");
-//    
-//    roles.add(role);
-//    roles.add(role2);
-//  }
+  public RoleRepositoryImpl() {
+  }
 
-	@Override
-	public List<Role> findAll() {
-		System.out.println("Begin Query All");
-		
-		Session session = null;
-		try {
-			// Step-2: Implementation
-			session = sessionFactory.getCurrentSession();
-		} catch (HibernateException e) {
-			// Step-3: Implementation
-			session = sessionFactory.openSession();
-		}
-		String sql = "FROM roles";
-		Query<Role> query = session.createQuery(sql, Role.class);
-		System.out.println(query.toString());
-		List<Role> roles = query.getResultList();
-		return roles;
+  private Session session;
 
-	}
+  private Session session() {
 
-	@Override
-	public Role findById(String id) {
-		Session session = null;
-		try {
-			// Step-2: Implementation
-			session = sessionFactory.getCurrentSession();
-		} catch (HibernateException e) {
-			// Step-3: Implementation
-			session = sessionFactory.openSession();
-		}
-		Role role = session.find(Role.class, id);
-		// session.getTransaction().commit();
-		session.flush();
-		session.close();
-		return role;
-	}
+    try {
+      session = sessionFactory.getCurrentSession();
+    } catch (HibernateException e) {
+      session = sessionFactory.openSession();
+    }
+    return session;
+  }
 
-	@Override
-	public boolean save(Role role) {
-		Session session = null;
-		try {
-			// Step-2: Implementation
-			session = sessionFactory.getCurrentSession();
-		} catch (HibernateException e) {
-			// Step-3: Implementation
-			session = sessionFactory.openSession();
-		}
+  private void closeSession(Session session) {
+    if (session != null) {
+      session.flush();
+      session.close();
+    }
+  }
 
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(role);
-			session.getTransaction().commit();
-			return true;
-		} catch (RuntimeException e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		} finally {
-			session.flush();
-			session.close();
-		}
-		return false;
-	}
+  public List<Role> findAll() {
+    System.out.println("Begin Query All");
 
-	@Override
-	public boolean delete(String id) {
-		Session session = null;
-		try {
-			// Step-2: Implementation
-			session = sessionFactory.getCurrentSession();
-		} catch (HibernateException e) {
-			// Step-3: Implementation
-			session = sessionFactory.openSession();
-		}
-		Role role = session.find(Role.class, id);
+    Session session = this.session();
+    try {
+      String sql = "FROM roles";
+      Query<Role> query = session.createQuery(sql, Role.class);
+      List<Role> roles = query.getResultList();
+      return roles;
+    } catch (RuntimeException e) {
+      this.closeSession(session);
+      e.printStackTrace();
+    }
+    return null;
 
-		try {
-			session.beginTransaction();
-			session.delete(role);
-			session.getTransaction().commit();
-			return true;
-		} catch (RuntimeException e) {
-			session.getTransaction().rollback();
-			e.printStackTrace();
-		} finally {
-			session.flush();
-			session.close();
-		}
-		return false;
-	}
+  }
 
-//  @Override
-//  public boolean update(Role role) {
-//    for (Role r : roles) {
-//      if (r.getId().equalsIgnoreCase(role.getId())) {
-//        r.setName(role.getName());
-//        r.setDescription(role.getDescription());
-//        return true;
-//      }
-//    }
-//    return true;
-//  }
+  public Role findById(String id) {
+    Session session = this.session();
+    Role role = session.find(Role.class, id);
+    return role;
+  }
+
+  public boolean save(Role role) {
+    Session session = this.session();
+
+    try {
+      session.saveOrUpdate(role);
+      return true;
+    } catch (RuntimeException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
+
+  public boolean delete(String id) {
+    Session session = this.session();
+    Role role = session.find(Role.class, id);
+
+    try {
+      session.delete(role);
+      return true;
+    } catch (RuntimeException e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
 
 }

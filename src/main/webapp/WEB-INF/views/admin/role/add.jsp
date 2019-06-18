@@ -24,11 +24,11 @@
           <mvc:form action="${ action }" method="post" modelAttribute="role">
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
-                  <label>Role ID</label>
-                  <mvc:input type="text" path="id"    cssClass="form-control" />
-                  <mvc:errors path="id" cssClass="text-danger" />
-                </div>
+<!--                 <div class="form-group"> -->
+<!--                   <label>Role ID</label> -->
+<%--                   <mvc:input type="text" path="id"    cssClass="form-control" /> --%>
+<%--                   <mvc:errors path="id" cssClass="text-danger" /> --%>
+<!--                 </div> -->
                 <div class="form-group">
                   <label>Role Name</label>
                   <mvc:input type="text" path="name"    cssClass="form-control" />

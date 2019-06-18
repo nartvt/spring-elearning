@@ -1,44 +1,60 @@
 package com.elearning.program.config;
 
-import java.util.Properties;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@PropertySource("classpath:db.properties")
 public class HibernnateConfig {
-	 private static final String MYSQL_DRIVER_CLASS_NAME ="com.mysql.jdbc.Driver";
-	    private static final String MYSQL_HOST = "localhost";
-	    private static final String MYSQL_URL = "jdbc:mysql://" + MYSQL_HOST + ":3306/springelearning?autoReconnect=true&useSSL=false";
-	    private static final String MYSQL_USER_NAME = "root";
-	    private static final String MYSQL_USER_PASSWORD = "root";
-	@Bean
-	public DataSource dataSource() {
-		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-		driverManagerDataSource.setDriverClassName(MYSQL_DRIVER_CLASS_NAME);
-		driverManagerDataSource.setUrl(MYSQL_URL);
-		driverManagerDataSource.setUsername(MYSQL_USER_NAME);
-		driverManagerDataSource.setPassword(MYSQL_USER_PASSWORD);
-		return driverManagerDataSource;		
-	}
-	
-	@Bean
-	public LocalSessionFactoryBean sessionFactoryBean() {
-		LocalSessionFactoryBean bean = new LocalSessionFactoryBean();
-		bean.setDataSource(dataSource());
-		bean.setPackagesToScan("com.elearning.program.entity");
 
-		Properties properties = new Properties();
-		properties.put("hibernate.dialect","org.hibernate.dialect.MySQLDialect");
-		properties.put("hibernate.show_sql",true);
-		bean.setHibernateProperties(properties);
-		return bean;
-	}
-	
+  @Autowired
+  private Environment environment;
+
+  @Bean
+  public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+    return new PropertySourcesPlaceholderConfigurer();
+  }
+
+  @Bean
+  public DataSource dataSource() {
+    DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+    driverManagerDataSource.setDriverClassName(environment.getProperty("mysql.driver"));
+    driverManagerDataSource.setUrl(environment.getProperty("mysql.url"));
+    driverManagerDataSource.setUsername(environment.getProperty("mysql.username"));
+    driverManagerDataSource.setPassword(environment.getProperty("mysql.password"));
+    return driverManagerDataSource;
+  }
+
+  @Bean
+  public LocalSessionFactoryBean sessionFactoryBean() {
+    LocalSessionFactoryBean bean = new LocalSessionFactoryBean();
+    bean.setDataSource(dataSource());
+    bean.setPackagesToScan(environment.getProperty("hibernate.package_scan"));
+
+    Properties properties = new Properties();
+    properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+    properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+    bean.setHibernateProperties(properties);
+    return bean;
+  }
+
+  @Bean
+  public HibernateTransactionManager transactionManager() {
+    HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
+    hibernateTransactionManager.setSessionFactory(sessionFactoryBean().getObject());
+    return hibernateTransactionManager;
+  }
+
 }

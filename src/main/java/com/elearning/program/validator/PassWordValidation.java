@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import com.elearning.program.dto.UserDTO;
 import com.elearning.program.entity.User;
 
 @Component
@@ -17,7 +18,7 @@ public class PassWordValidation implements  Validator{
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		User user = (User)target;		
+	  UserDTO user = (UserDTO)target;		
 		
 		if(StringUtils.isBlank(user.getPasswordConfirm())) {
 			errors.rejectValue("passwordConfirm","user","Mat Khau chua duoc nhap, Vui Long Nhap Lai Mat Khau");

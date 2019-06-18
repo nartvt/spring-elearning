@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.elearning.program.dto.RoleDTO;
 import com.elearning.program.entity.Role;
@@ -18,7 +19,6 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleRepository roleRepository;
 
-	@Override
 	public List<RoleDTO> findAll() {
 		List<Role> roleList = roleRepository.findAll();
 		List<RoleDTO> roleDTOList = new ArrayList<RoleDTO>();
@@ -33,7 +33,6 @@ public class RoleServiceImpl implements RoleService {
 
 	}
 
-	@Override
 	public RoleDTO findById(String id) {
 		Role role = roleRepository.findById(id);
 		RoleDTO roleDTO = new RoleDTO();
@@ -43,22 +42,19 @@ public class RoleServiceImpl implements RoleService {
 		return roleDTO;
 	}
 
-	@Override
 	public boolean save(RoleDTO roleDTO) {
 		roleDTO.setId(UUID.randomUUID().toString());
 		Role role = new Role();
-		role.setId(role.getId());
-		role.setName(role.getName());
-		role.setDescription(role.getDescription());
+		role.setId(roleDTO.getId());
+		role.setName(roleDTO.getName());
+		role.setDescription(roleDTO.getDescription());
 		return roleRepository.save(role);
 	}
 
-	@Override
 	public boolean delete(String id) {
 		return roleRepository.delete(id);
 	}
 
-	@Override
 	public boolean update(RoleDTO roleDTO) {
 		Role role = new Role();
 		role.setId(role.getId());
