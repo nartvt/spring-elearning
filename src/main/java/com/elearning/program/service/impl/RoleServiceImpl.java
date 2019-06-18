@@ -24,7 +24,7 @@ public class RoleServiceImpl implements RoleService {
 		List<RoleDTO> roleDTOList = new ArrayList<RoleDTO>();
 		for (Role role : roleList) {
 			RoleDTO roleDTO = new RoleDTO();
-			roleDTO.setId(role.getId());
+			roleDTO.setId(role.getRoleId());
 			roleDTO.setName(role.getName());
 			roleDTO.setDescription(role.getDescription());
 			roleDTOList.add(roleDTO);
@@ -36,7 +36,7 @@ public class RoleServiceImpl implements RoleService {
 	public RoleDTO findById(String id) {
 		Role role = roleRepository.findById(id);
 		RoleDTO roleDTO = new RoleDTO();
-		roleDTO.setId(role.getId());
+		roleDTO.setId(role.getRoleId());
 		roleDTO.setName(role.getName());
 		roleDTO.setDescription(role.getDescription());
 		return roleDTO;
@@ -57,7 +57,7 @@ public class RoleServiceImpl implements RoleService {
 
 	public boolean update(RoleDTO roleDTO) {
 		Role role = new Role();
-		role.setId(role.getId());
+		role.setId(role.getRoleId());
 		role.setName(role.getName());
 		role.setDescription(role.getDescription());
 		return roleRepository.save(role);

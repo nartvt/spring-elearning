@@ -3,7 +3,7 @@ package com.elearning.program.dto;
 import javax.validation.constraints.NotBlank;
 
 public class RoleDTO {
-	private String id;
+	private String roleId;
 	 @NotBlank(message = "Role name chua duoc nhap")
 	private String name;
 	 @NotBlank(message = "Role description chua duoc nhap")
@@ -13,18 +13,18 @@ public class RoleDTO {
 
 	}
 
-	public RoleDTO(String id, String name, String description) {
-		this.id = id;
+	public RoleDTO(String roleId, String name, String description) {
+		this.roleId = roleId;
 		this.name = name;
 		this.description = description;
 	}
 
 	public String getId() {
-		return id;
+		return roleId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String roleId) {
+		this.roleId = roleId;
 	}
 
 	public String getName() {

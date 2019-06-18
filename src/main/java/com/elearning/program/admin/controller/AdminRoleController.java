@@ -20,7 +20,6 @@ import com.elearning.program.entity.Role;
 import com.elearning.program.service.RoleService;
 
 @Controller
-@Transactional
 @RequestMapping("admin/role")
 public class AdminRoleController {
 

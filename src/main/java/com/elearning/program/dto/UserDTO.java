@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Length;
 
 public class UserDTO {
 
-	private String id;
+	private String userId;
 
 	 @NotBlank(message = "Email chua duoc nhap")
 	 @Email(message = "Email khong dung dinh dang")
@@ -33,9 +33,9 @@ public class UserDTO {
 	public UserDTO() {
 	}
 
-	public UserDTO(String id, String email, String fullname, String password, String avatar, String phone, String address,
+	public UserDTO(String userId, String email, String fullname, String password, String avatar, String phone, String address,
 			String personType, String website, String facebook, String roleId) {
-		this.id = id;
+		this.userId = userId;
 		this.email = email;
 		this.fullname = fullname;
 		this.password = password;
@@ -49,8 +49,8 @@ public class UserDTO {
 	}
 
  
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
 	public String getPasswordConfirm() {
 		return passwordConfirm;
@@ -67,8 +67,8 @@ public class UserDTO {
 		this.personType = personType;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getEmail() {

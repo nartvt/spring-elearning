@@ -8,18 +8,20 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.elearning.program.entity.Role;
 import com.elearning.program.repository.RoleRepository;
 
 @Repository
+@Transactional(rollbackFor = Exception.class)
 public class RoleRepositoryImpl implements RoleRepository {
   /**
    * 
    */
   private static final long serialVersionUID = 1L;
   /**
-   * 
+//   * 
    */
   @Autowired
   private SessionFactory sessionFactory;
@@ -39,13 +41,6 @@ public class RoleRepositoryImpl implements RoleRepository {
     return session;
   }
 
-  private void closeSession(Session session) {
-    if (session != null) {
-      session.flush();
-      session.close();
-    }
-  }
-
   public List<Role> findAll() {
     System.out.println("Begin Query All");
 
@@ -56,7 +51,6 @@ public class RoleRepositoryImpl implements RoleRepository {
       List<Role> roles = query.getResultList();
       return roles;
     } catch (RuntimeException e) {
-      this.closeSession(session);
       e.printStackTrace();
     }
     return null;

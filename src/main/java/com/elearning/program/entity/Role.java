@@ -15,7 +15,7 @@ public class Role{
 	 */
 	// @NotBlank(message = "Role Id chua duoc nhap")
 	@Id
-	private String id;
+	private String roleId;
 	private String name;
 	private String description;
 
@@ -39,18 +39,18 @@ public class Role{
 		this.users = users;
 	}
 
-	public Role(String id, String name, String description) {
-		this.id = id;
+	public Role(String roleId, String name, String description) {
+		this.roleId = roleId;
 		this.name = name;
 		this.description = description;
 	}
 
-	public String getId() {
-		return id;
+	public String getRoleId() {
+		return roleId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setId(String roleId) {
+		this.roleId = roleId;
 	}
 
 	public String getName() {

@@ -11,7 +11,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    return new Class[] {HibernnateConfig.class};
+    return new Class[] {HibernnateConfig.class,AdminSecurityConfig.class,WebSecurityConfig.class};
   }
 
   @Override

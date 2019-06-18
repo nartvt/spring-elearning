@@ -35,7 +35,7 @@
                 <c:forEach items="${ roles }" var="item" varStatus="loop">
                   <tr>
                     <th>${ loop.index + 1 }</th>
-<%--                     <td>${ item.id }</td> --%>
+<%--                     <td>${ item.roleId }</td> --%>
                     <td>${ item.name }</td>
                     <td>${ item.description }</td>
                     <td><a

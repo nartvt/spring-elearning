@@ -26,8 +26,8 @@
               <div class="col-md-6">
 <!--                 <div class="form-group"> -->
 <!--                   <label>Role ID</label> -->
-<%--                   <mvc:input type="text" path="id"    cssClass="form-control" /> --%>
-<%--                   <mvc:errors path="id" cssClass="text-danger" /> --%>
+<%--                   <mvc:input type="text" path="roleId"    cssClass="form-control" /> --%>
+<%--                   <mvc:errors path="roleId" cssClass="text-danger" /> --%>
 <!--                 </div> -->
                 <div class="form-group">
                   <label>Role Name</label>

@@ -23,7 +23,7 @@
           <mvc:form action="${ action }" method="post" modelAttribute="user">
             <div class="row">
               <div class="col-md-6">
-                <mvc:hidden path="id" />
+                <mvc:hidden path="userId" />
                 <div class="form-group">
                   <label>Họ tên</label>
                   <mvc:input type="text" path="fullname" cssClass="form-control" />

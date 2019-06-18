@@ -10,7 +10,7 @@ import javax.persistence.Transient;
 public class User {
 
 	@Id
-	private String id;
+	private String userId;
 	private String email;
 	private String fullname;
 	private String password;
@@ -31,9 +31,9 @@ public class User {
 	public User() {
 	}
 
-	public User(String id, String email, String fullname, String password, String avatar, String phone, String address,
+	public User(String userId, String email, String fullname, String password, String avatar, String phone, String address,
 			String personType, String website, String facebook, String roleId) {
-		this.id = id;
+		this.userId = userId;
 		this.email = email;
 		this.fullname = fullname;
 		this.password = password;
@@ -54,8 +54,8 @@ public class User {
 		this.role = role;
 	}
 
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
 	public String getPasswordConfirm() {
 		return passwordConfirm;
@@ -72,8 +72,8 @@ public class User {
 		this.personType = personType;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getEmail() {

@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.elearning.program.dto.UserDTO;
 import com.elearning.program.entity.User;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
     return userDTOs;
   }
   public boolean save(UserDTO userDTO) {
-    userDTO.setId(UUID.randomUUID().toString());
+    userDTO.setUserId(UUID.randomUUID().toString());
     User user = new User();
     this.transferDataUser(user, userDTO);
     return this.userRepository.save(user);
@@ -41,7 +42,7 @@ public class UserServiceImpl implements UserService {
   private void transferDataUser(User user, UserDTO userDTO) {
     
     
-    user.setId(userDTO.getId());
+    user.setUserId(userDTO.getUserId());
     user.setFullname(userDTO.getFullname());
     user.setEmail(userDTO.getEmail());
     user.setPassword(userDTO.getPassword());
@@ -57,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
   private void transferDataUserDTO(UserDTO userDTO, User user) {
     
-    userDTO.setId(user.getId());
+    userDTO.setUserId(user.getRoleId());
     userDTO.setFullname(user.getFullname());
     userDTO.setEmail(user.getEmail());
     userDTO.setPassword(user.getPassword());
@@ -79,7 +80,7 @@ public class UserServiceImpl implements UserService {
     return userRepository.delete(id);
   }
   public boolean update(UserDTO user) {
-    User u = userRepository.findById(user.getId());
+    User u = userRepository.findById(user.getUserId());
     if (u != null) {
       u.setEmail(user.getEmail());
       u.setFullname(user.getFullname());

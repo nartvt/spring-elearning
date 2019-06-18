@@ -7,7 +7,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +20,8 @@ import com.elearning.program.service.RoleService;
 import com.elearning.program.service.UserService;
 import com.elearning.program.validator.PassWordValidation;
 
+
 @Controller
-@Transactional
 @RequestMapping("admin/user")
 public class AdminUserController {
 
