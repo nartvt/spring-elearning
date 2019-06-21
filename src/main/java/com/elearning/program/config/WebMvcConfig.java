@@ -12,31 +12,36 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.elearning.program.repository",
-		"com.elearning.program.service", 
-		"com.elearning.program.entity", 
-		"com.elearning.program.controller", 
-		"com.elearning.program.admin.controller","com.elearning.program.validator" })
+@ComponentScan(basePackages = {
+        "com.elearning.program.dto",
+        "com.elearning.program.entity",
+        "com.elearning.program.security",
+        "com.elearning.program.service",
+        "com.elearning.program.validator",
+        "com.elearning.program.controller",
+        "com.elearning.program.repository",
+        "com.elearning.program.admin.controller"
+})
 public class WebMvcConfig implements WebMvcConfigurer {
-//  public void configureViewResolvers(ViewResolverRegistry viewResolverRegistry) {
+    //  public void configureViewResolvers(ViewResolverRegistry viewResolverRegistry) {
 //    viewResolverRegistry.jsp("/WEB-INF/views/", ".jsp");
 //  }
-  @Bean
-  public TilesConfigurer tilesConfigurer() {
-    TilesConfigurer tilesConfigurer = new TilesConfigurer();
-    tilesConfigurer.setDefinitions(new String[] { "/WEB-INF/tiles.xml" });
-    tilesConfigurer.setCheckRefresh(true);
-    return tilesConfigurer;
-  }
+    @Bean
+    public TilesConfigurer tilesConfigurer() {
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+        tilesConfigurer.setDefinitions(new String[]{"/WEB-INF/tiles.xml"});
+        tilesConfigurer.setCheckRefresh(true);
+        return tilesConfigurer;
+    }
 
-  public void configureViewResolvers(ViewResolverRegistry registry) {
-    TilesViewResolver tilesViewResolver = new TilesViewResolver();
-    registry.viewResolver(tilesViewResolver);
-  }
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        TilesViewResolver tilesViewResolver = new TilesViewResolver();
+        registry.viewResolver(tilesViewResolver);
+    }
 
-  public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("/statics/**").addResourceLocations("/resources/");
-  }
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/statics/**").addResourceLocations("/resources/");
+    }
 //
 //  @Bean
 //  public UserRepository userRepository() {

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+  pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="page-body">
   <div class="row">
@@ -39,8 +39,8 @@
                     <td>${ item.name }</td>
                     <td>${ item.description }</td>
                     <td><a
-                      href='<c:url value="/admin/role/edit/${item.id}"/>' class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
-                      <a href="<c:url value = '/admin/role/delete/${item.id}'/>" class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
+                      href='<c:url value="/admin/role/edit/${item.roleId}"/>' class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
+                      <a href="<c:url value = '/admin/role/delete/${item.roleId}'/>" class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
                     </td>
                   </tr>
                 </c:forEach>

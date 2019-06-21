@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +20,12 @@
     <meta name="author" content="#">
     <!-- Favicon icon -->
 
-    <link rel="icon" href="/statics/admin/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="<c:url value="/statics/admin/assets/images/favicon.ico"/>" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
-    <link rel="stylesheet" type="text/css" href="/statics/admin/bower_components/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/admin/bower_components/bootstrap/css/bootstrap.min.css"/>">
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="/statics/admin/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/statics/admin/assets/css/style.css"/>" >
 </head>
 
 <body class="fix-menu">
@@ -75,10 +76,10 @@
         <!-- end of container-fluid -->
     </section>
     <!-- Required Jquery -->
-    <script type="text/javascript" src="/statics/admin/bower_components/jquery/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/statics/admin/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/statics/admin/bower_components/popper.js/js/popper.min.js"></script>
-    <script type="text/javascript" src="/statics/admin/bower_components/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<c:url value="/statics/admin/bower_components/jquery/js/jquery.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/statics/admin/bower_components/jquery-ui/js/jquery-ui.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/statics/admin/bower_components/popper.js/js/popper.min.js"/>"></script>
+    <script type="text/javascript" src="<c:url value="/statics/admin/bower_components/bootstrap/js/bootstrap.min.js"/>"></script>
 </body>
 
 </html>
