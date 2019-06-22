@@ -57,7 +57,8 @@
         <put-attribute name="title" value="Trang chủ"/>
         <put-attribute name="body" value="/WEB-INF/views/home/index.jsp"/>
     </definition>
-<definition name="adminLogin" template="/WEB-INF/views/admin/account/login.jsp">  
+	<definition name="adminLogin" template="/WEB-INF/views/admin/account/login.jsp">  
+	
    </definition>
 
 </tiles-definitions>

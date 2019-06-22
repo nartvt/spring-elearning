@@ -39,6 +39,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
+            <c:url value="/admin/loginprocessing" var="action" />
             <!-- Authentication card start -->
             <form action="${ action }" method="post" class="md-float-material form-material">
               <div class="text-center">

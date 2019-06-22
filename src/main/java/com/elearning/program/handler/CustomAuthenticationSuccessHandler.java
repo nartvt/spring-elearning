@@ -11,9 +11,12 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler{
 
-	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().write("true");
+		response.getWriter().flush();
+		response.getWriter().close();
 	}
 }

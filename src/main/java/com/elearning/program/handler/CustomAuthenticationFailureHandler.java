@@ -11,12 +11,11 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
-	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write("true");
+		response.getWriter().write("false");
 		response.getWriter().flush();
 		response.getWriter().close();
 
