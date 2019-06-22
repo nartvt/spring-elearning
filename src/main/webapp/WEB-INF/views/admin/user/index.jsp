@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+  pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="page-body">
   <div class="row">
@@ -17,7 +17,6 @@
         <div class="card-header px-0 pb-2">
           <h2 class="text-uppercase text-center">Danh sách tài khoản</h2>
         <a href='<c:url value="/admin/user/add"/>' class="btn btn-sm btn-primary">Thêm mới user</a>
-          <a  href='<c:url value="/admin/role/add"/>' class="btn btn-sm btn-primary">Thêm mới Role</a>
         </div>
         <div class="card-block table-border-style">
           <div class="table-responsive">
@@ -39,8 +38,8 @@
                     <td>${ item.email }</td>
                     <td>${ item.phone }</td>
                     <td><a
-                      href='<c:url value="/admin/user/edit/${item.id}"/>' class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
-                      <a href="<c:url value = '/admin/user/delete/${item.id}'/>" class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
+                      href='<c:url value="/admin/user/edit/${item.userId}"/>' class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
+                      <a href="<c:url value = '/admin/user/delete/${item.userId}'/>" class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
                     </td>
                   </tr>
                 </c:forEach>

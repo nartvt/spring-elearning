@@ -1,4 +1,4 @@
-package com.elearning.program.config;
+package com.elearning.program.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

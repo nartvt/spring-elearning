@@ -20,6 +20,4 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 		response.getWriter().flush();
 		response.getWriter().close();
 
-	}
-
-}
+	}	}

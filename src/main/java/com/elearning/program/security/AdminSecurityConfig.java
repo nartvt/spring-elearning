@@ -1,4 +1,4 @@
-package com.elearning.program.config;
+package com.elearning.program.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,15 +14,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.elearning.program.handler.CustomAuthenticationFailureHandler;
-import com.elearning.program.handler.CustomAuthenticationSuccessHandler;
-
 @Configuration
 @EnableWebSecurity
 @ComponentScan("com.elearning.program")
-@Order(2)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
-
+@Order(1)
+public class AdminSecurityConfig extends  WebSecurityConfigurerAdapter {
+	
 	@Autowired
 	private UserDetailsService userDetailService;
 
@@ -31,36 +28,33 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		return new BCryptPasswordEncoder();
 	}
 
-	public void init(WebSecurity builder) throws Exception {
 
-	}
-
-protected void configure(HttpSecurity httpSecurity) throws Exception {
+	protected void configure(HttpSecurity httpSecurity) throws Exception {
 	httpSecurity.csrf()
 	.disable()
+	.antMatcher("/admin/**")
 	.authorizeRequests()
-	.antMatchers("/user/**")
-	.hasAnyRole("ADMIN","TEACHER","STUDENT")
-	.antMatchers("/teacher/**")
-	.hasAnyRole("ADMIN","TEACHER")
+//	.antMatchers("/admin/**")
+//	.hasAnyRole("ADMIN")
 	.anyRequest()
 	.permitAll()
 	.and()
 	.formLogin()
-	.loginPage("/auth/login")
+	.loginPage("/admin/login")
+	.loginProcessingUrl("/admin/login")
 	.usernameParameter("email")
 	.passwordParameter("password")
-	.successHandler(new CustomAuthenticationSuccessHandler())
-	.failureHandler(new CustomAuthenticationFailureHandler())
+	.defaultSuccessUrl("/admin/category")
+	.failureUrl("/admin/login?error=deny")
 	.and()
 	.logout()
-	.logoutUrl("/auth/logout")
-	.logoutSuccessUrl("/")
+	.logoutUrl("/admin/logout")
+	.logoutSuccessUrl("/admin/login")
 	.deleteCookies("JSESSIONID")
 	.and()
 	.exceptionHandling()
-	.accessDeniedPage("/403");
-}
+	.accessDeniedPage("/admin/403");
+	}
 
 	public void configure(WebSecurity builder) throws Exception {
 		builder.ignoring().antMatchers("/statics/**");
@@ -69,4 +63,5 @@ protected void configure(HttpSecurity httpSecurity) throws Exception {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
 	}
+
 }

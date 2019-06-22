@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
+
 public class CustomUserDetail extends User implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
@@ -31,5 +32,4 @@ public class CustomUserDetail extends User implements UserDetails {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-
 }

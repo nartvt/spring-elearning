@@ -21,7 +21,7 @@ public class UserDetailServiceImpl implements UserDetailsService{
 
 	@Autowired
 	private UserRepository userRepositoryImpl;
-	
+
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = userRepositoryImpl.findByEmail(email);
 		if(user==null) {
@@ -36,5 +36,5 @@ public class UserDetailServiceImpl implements UserDetailsService{
 		return customUserDetail;
 	}
 
-	
+
 }

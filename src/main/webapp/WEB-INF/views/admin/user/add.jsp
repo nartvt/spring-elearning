@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+  pageEncoding="UTF-8" session="false"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="mvc"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group">
                   <label>Role Id</label>
-                  <mvc:select path="roleId" items="${roles }"  itemValue="id" itemLabel="id"   cssClass="form-control"></mvc:select>
+                  <mvc:select path="roleId" items="${roles }"  itemValue="roleId" itemLabel="roleId"   cssClass="form-control"></mvc:select>
                   
                 </div>
               </div>
