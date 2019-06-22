@@ -6,6 +6,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import com.elearning.program.security.AdminSecurityConfig;
+import com.elearning.program.security.WebSecurityConfig;
 
 
 
@@ -13,7 +14,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    return new Class[] { HibernnateConfig.class,AdminSecurityConfig.class};
+    return new Class[] { HibernnateConfig.class,AdminSecurityConfig.class,WebSecurityConfig.class};
   }
 
   @Override

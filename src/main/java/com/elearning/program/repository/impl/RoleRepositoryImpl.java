@@ -40,8 +40,6 @@ public class RoleRepositoryImpl implements RoleRepository {
     }
 
     public List<Role> findAll() {
-        System.out.println("Begin Query All");
-
         Session session = this.session();
         try {
             String sql = "FROM roles";

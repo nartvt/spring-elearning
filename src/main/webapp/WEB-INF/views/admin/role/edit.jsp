@@ -26,10 +26,10 @@
             <div class="row">
               <div class="col-md-6">
                 <mvc:hidden path="roleId" />
-                <div class="form-group">
-                  <label>Role ID</label>
-                  <mvc:input type="text" path="roleId" cssClass="form-control" disabled="true"/>
-                </div>
+<!--                 <div class="form-group"> -->
+<!--                   <label>Role ID</label> -->
+<%--                   <mvc:input type="text" path="roleId" cssClass="form-control" disabled="true"/> --%>
+<!--                 </div> -->
                 <div class="form-group">
                   <label>Role Name</label>
                   <mvc:input type="text" path="name"  cssClass="form-control" />

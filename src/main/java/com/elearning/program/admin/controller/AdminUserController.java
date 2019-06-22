@@ -72,8 +72,8 @@ public class AdminUserController {
     }
 
     @GetMapping("delete/{userId}")
-    public String delete(@PathVariable String id, ModelMap model) {
-        userService.delete(id);
+    public String delete(@PathVariable("userId") String userId, ModelMap model) {
+        userService.delete(userId);
         return "redirect:/admin/user";
 
     }
