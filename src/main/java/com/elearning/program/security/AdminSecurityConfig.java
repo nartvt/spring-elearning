@@ -29,11 +29,14 @@ public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   protected void configure(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity.csrf().disable().antMatcher("/admin/**").authorizeRequests()
-      //.antMatchers("/admin/**")
-      //.hasAnyRole("ADMIN")
-        .anyRequest()
+    httpSecurity.csrf().disable()
+    .authorizeRequests()
+        .antMatchers("/admin/**")
+        .hasAnyRole("ADMIN")
+        .antMatchers("/admin/**")
         .permitAll()
+        .anyRequest()
+        .authenticated()
         .and()
         .formLogin()
         .loginPage("/admin/login")

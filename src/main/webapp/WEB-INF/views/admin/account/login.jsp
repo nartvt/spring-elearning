@@ -13,25 +13,18 @@
       <![endif]-->
 <!-- Meta -->
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="#">
-<meta name="keywords"
-	content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+<meta name="keywords" content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
 <meta name="author" content="#">
 <!-- Favicon icon -->
-<link rel="icon" href="<c:url value='/statics/admin/assets/images/favicon.ico'/>"
-	type="image/x-icon">
+<link rel="icon" href="<c:url value='/statics/admin/assets/images/favicon.ico'/>" type="image/x-icon">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
-<!-- Required Fremwork -->
 <link rel="stylesheet" type="text/css" href="<c:url value='/statics/admin/bower_components/bootstrap/css/bootstrap.min.css'/>">
-<!-- Style.css -->
-<link rel="stylesheet" type="text/css"	href="<c:url value='/statics/admin/assets/css/style.css'/>">
+<link rel="stylesheet" type="text/css"	href="<c:url value='/statics/admin/assets/css/style.css'/>"></head>
 
-</head>
-
- <body class="fix-menu">
+<body class="fix-menu">
     <div></div>
     <!-- Pre-loader end -->
     <section class="login-block">
@@ -68,25 +61,13 @@
                 </div>
               </div>
             </form>
-            <!-- end of form -->
           </div>
-          <!-- Authentication card end -->
         </div>
-        <!-- end of col-sm-12 -->
       </div>
-      <!-- end of row -->
-      <!-- end of container-fluid -->
     </section>
-    <!-- Required Jquery -->
-    <script type="text/javascript" src="<c:url value='/statics/admin/bower_components/jquery/js/jquery.min.js'/>">
-    </script>
-    <script type="text/javascript" src="<c:url value='/statics/admin/bower_components/jquery-ui/js/jquery-ui.min.js'/>">
-    </script>
-    <script type="text/javascript" src="<c:url value='/statics/admin/bower_components/popper.js/js/popper.min.js'/>">
-    </script>
-    <script type="text/javascript" src="<c:url value='/statics/admin/bower_components/bootstrap/js/bootstrap.min.js'/>">
-    </script>
-  </body>
-
-
+    <script type="text/javascript" src="<c:url value='/statics/admin/bower_components/jquery/js/jquery.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/statics/admin/bower_components/jquery-ui/js/jquery-ui.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/statics/admin/bower_components/popper.js/js/popper.min.js'/>"></script>
+    <script type="text/javascript" src="<c:url value='/statics/admin/bower_components/bootstrap/js/bootstrap.min.js'/>"> </script>
+</body>
 </html>
