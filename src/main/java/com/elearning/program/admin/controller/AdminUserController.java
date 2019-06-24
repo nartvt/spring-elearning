@@ -14,67 +14,66 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("admin/user")
 public class AdminUserController {
 
-    @Autowired
-    private UserService userService;
+  @Autowired
+  private UserService userService;
 
-    @Autowired
-    private RoleService roleService;
+  @Autowired
+  private RoleService roleService;
 
-    @Autowired
-    private PassWordValidation passwordValidation;
+  @Autowired
+  private PassWordValidation passwordValidation;
 
-    @GetMapping("")
-    public String index(ModelMap model) {
-        List<UserDTO> users = userService.findAll();
-        if (users == null) {
-            users = new ArrayList<UserDTO>();
-        }
-        model.addAttribute("users", users);
-        return "userList";
+  @GetMapping("")
+  public String index(ModelMap model) {
+    List<UserDTO> users = userService.findAll();
+    if (users == null) {
+      users = new ArrayList<UserDTO>();
     }
+    model.addAttribute("users", users);
+    return "userList";
+  }
 
-    @GetMapping("add")
-    public String add(ModelMap model) {
-        // userService.save(user);
-        model.addAttribute("user", new UserDTO());
-        model.addAttribute("roles", roleService.findAll());
-        return "userAdd";
+  @GetMapping("add")
+  public String add(ModelMap model) {
+    // userService.save(user);
+    model.addAttribute("user", new UserDTO());
+    model.addAttribute("roles", roleService.findAll());
+    return "userAdd";
+  }
+
+  @PostMapping("add")
+  public String add(ModelMap model, @Valid @ModelAttribute("user") UserDTO user, BindingResult error) {
+
+    passwordValidation.validate(user, error);
+    if (error.hasErrors()) {
+      model.addAttribute("roles", roleService.findAll());
+      return "userAdd";
     }
+    userService.save(user);
+    return "redirect:/admin/user";
+  }
 
-    @PostMapping("add")
-    public String add(ModelMap model, @Valid @ModelAttribute("user") UserDTO user, BindingResult error) {
+  @GetMapping("edit/{userId}")
+  public String edit(@PathVariable("userId") String userId, ModelMap model) {
+    UserDTO user = userService.findById(userId);
+    model.addAttribute("user", user);
+    return "userEdit";
+  }
 
-        passwordValidation.validate(user, error);
-        if (error.hasErrors()) {
-            model.addAttribute("roles", roleService.findAll());
-            return "userAdd";
-        }
-        userService.save(user);
-        return "redirect:/admin/user";
-    }
+  @PostMapping("edit")
+  public String edit(@ModelAttribute("user") UserDTO user, ModelMap model) {
+    userService.update(user);
+    return "redirect:/admin/user";
+  }
 
-    @GetMapping("edit/{userId}")
-    public String edit(@PathVariable("userId") String userId, ModelMap model) {
-        UserDTO user = userService.findById(userId);
-        model.addAttribute("user", user);
-        return "userEdit";
-    }
+  @GetMapping("delete/{userId}")
+  public String delete(@PathVariable("userId") String userId, ModelMap model) {
+    userService.delete(userId);
+    return "redirect:/admin/user";
 
-    @PostMapping("edit")
-    public String edit(@ModelAttribute("user") UserDTO user, ModelMap model) {
-        userService.update(user);
-        return "redirect:/admin/user";
-    }
-
-    @GetMapping("delete/{userId}")
-    public String delete(@PathVariable("userId") String userId, ModelMap model) {
-        userService.delete(userId);
-        return "redirect:/admin/user";
-
-    }
+  }
 }

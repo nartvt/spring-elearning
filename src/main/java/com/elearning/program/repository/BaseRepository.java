@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface BaseRepository<T> extends Serializable {
-    List<T> findAll();
+  List<T> findAll();
 
-    T findById(String id);
+  T findById(String id);
 
-    boolean save(T t);
+  boolean save(T t);
 
-    boolean delete(String id);
+  boolean delete(String id);
 
-    // boolean update(T t);
+  // boolean update(T t);
 }

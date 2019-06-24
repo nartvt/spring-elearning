@@ -17,95 +17,95 @@ import java.util.List;
 @Transactional(rollbackFor = Exception.class)
 public class UserRepositoryImpl implements UserRepository {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-    /**
-     *
-     */
-    @Autowired
-    private SessionFactory sessionFactory;
+  /**
+   *
+   */
+  private static final long serialVersionUID = 1L;
+  /**
+   *
+   */
+  @Autowired
+  private SessionFactory sessionFactory;
 
-    private Session session;
+  private Session session;
 
-    public UserRepositoryImpl() {
+  public UserRepositoryImpl() {
 
+  }
+
+  private Session session() {
+
+    try {
+      session = sessionFactory.getCurrentSession();
+    } catch (HibernateException e) {
+      session = sessionFactory.openSession();
     }
 
-    private Session session() {
+    return session;
+  }
 
-        try {
-            session = sessionFactory.getCurrentSession();
-        } catch (HibernateException e) {
-            session = sessionFactory.openSession();
-        }
+  public List<User> findAll() {
+    Session session = this.session();
 
-        return session;
+    try {
+      String sqlString = "FROM users";
+      Query<User> query = session.createQuery(sqlString, User.class);
+      List<User> users = query.getResultList();
+      return users;
+    } catch (RuntimeException e) {
+      e.printStackTrace();
     }
+    return null;
+  }
 
-    public List<User> findAll() {
-        Session session = this.session();
+  @Override
+  public User findById(String id) {
+    Session session = this.session();
+    User user = session.find(User.class, id);
+    return user;
 
-        try {
-            String sqlString = "FROM users";
-            Query<User> query = session.createQuery(sqlString, User.class);
-            List<User> users = query.getResultList();
-            return users;
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
-        return null;
+  }
+
+  @Override
+  public boolean save(User user) {
+    Session session = this.session();
+    try {
+      session.saveOrUpdate(user);
+      return true;
+    } catch (RuntimeException e) {
+      e.printStackTrace();
     }
+    return false;
 
-    @Override
-    public User findById(String id) {
-        Session session = this.session();
-        User user = session.find(User.class, id);
-        return user;
+  }
 
+  @Override
+  public boolean delete(String id) {
+    Session session = this.session();
+    User user = session.find(User.class, id);
+
+    try {
+      session.delete(user);
+      return true;
+    } catch (RuntimeException e) {
+      e.printStackTrace();
     }
+    return false;
+  }
 
-    @Override
-    public boolean save(User user) {
-        Session session = this.session();
-        try {
-            session.saveOrUpdate(user);
-            return true;
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
-        return false;
+  @Override
+  public User findByEmail(String email) {
+    final String sqlString = "FROM users WHERE email:email";
+    Session session = sessionFactory.getCurrentSession();
 
+    Query<User> query = session.createQuery(sqlString, User.class);
+    query.setParameter("email", email);
+    List<User> users = Lists.newArrayList();
+    users = query.getResultList();
+    if (users.size() > 0) {
+      return users.get(0);
     }
-
-    @Override
-    public boolean delete(String id) {
-        Session session = this.session();
-        User user = session.find(User.class, id);
-
-        try {
-            session.delete(user);
-            return true;
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    @Override
-    public User findByEmail(String email) {
-        final String sqlString = "FROM users WHERE email:email";
-        Session session = sessionFactory.getCurrentSession();
-
-        Query<User> query = session.createQuery(sqlString, User.class);
-        query.setParameter("email", email);
-        List<User> users = Lists.newArrayList();
-        users = query.getResultList();
-        if (users.size() > 0) {
-            return users.get(0);
-        }
-        return null;
-    }
+    return null;
+  }
 
 }

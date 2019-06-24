@@ -5,14 +5,14 @@ import com.elearning.program.dto.UserDTO;
 import java.util.List;
 
 public interface UserService {
-    List<UserDTO> findAll();
+  List<UserDTO> findAll();
 
-    boolean save(UserDTO user);
+  boolean save(UserDTO user);
 
-    UserDTO findById(String id);
+  UserDTO findById(String id);
 
-    boolean delete(String id);
+  boolean delete(String id);
 
-    boolean update(UserDTO user);
+  boolean update(UserDTO user);
 
 }

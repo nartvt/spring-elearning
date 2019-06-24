@@ -17,24 +17,23 @@ import com.elearning.program.entity.User;
 import com.elearning.program.repository.UserRepository;
 
 @Service("userDetailsService")
-public class UserDetailServiceImpl implements UserDetailsService{
+public class UserDetailServiceImpl implements UserDetailsService {
 
-	@Autowired
-	private UserRepository userRepositoryImpl;
+  @Autowired
+  private UserRepository userRepositoryImpl;
 
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User user = userRepositoryImpl.findByEmail(email);
-		if(user==null) {
-			throw new UsernameNotFoundException("User not found");
-		}
-		Set<GrantedAuthority> authorities =new HashSet<GrantedAuthority>();
-		 Role role = user.getRole();
-		 authorities.add(new SimpleGrantedAuthority(role.getName()));
-		 CustomUserDetail  customUserDetail = new CustomUserDetail(user.getEmail(),user.getPassword(), authorities);
-		 customUserDetail.setFullName(user.getFullname());
-		 customUserDetail.setAvatar(user.getAvatar());
-		return customUserDetail;
-	}
-
+  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    User user = userRepositoryImpl.findByEmail(email);
+    if (user == null) {
+      throw new UsernameNotFoundException("User not found");
+    }
+    Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+    Role role = user.getRole();
+    authorities.add(new SimpleGrantedAuthority(role.getName()));
+    CustomUserDetail customUserDetail = new CustomUserDetail(user.getEmail(), user.getPassword(), authorities);
+    customUserDetail.setFullName(user.getFullname());
+    customUserDetail.setAvatar(user.getAvatar());
+    return customUserDetail;
+  }
 
 }

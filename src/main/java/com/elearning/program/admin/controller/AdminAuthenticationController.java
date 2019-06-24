@@ -11,16 +11,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("admin")
 public class AdminAuthenticationController {
 
-	@GetMapping("login")
-	public String login(@RequestParam(required = false) String error, Model model) {
-		if (error != null && !error.isEmpty()) {
-			model.addAttribute("message", "Account or password is wrong ");
-		}
-		return "adminLogin";
-	}
-	@PostMapping("/login")
-	public String loginProcess( Model model) {
-		
-		return "adminLogin";
-	}
+  @GetMapping("login")
+  public String login(@RequestParam(required = false) String error, Model model) {
+    if (error != null && !error.isEmpty()) {
+      model.addAttribute("message", "Account or password is wrong ");
+    }
+    return "adminLogin";
+  }
+
+  @PostMapping("/login")
+  public String loginProcess(Model model) {
+
+    return "adminLogin";
+  }
 }

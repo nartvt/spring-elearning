@@ -8,13 +8,11 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 import com.elearning.program.security.AdminSecurityConfig;
 import com.elearning.program.security.WebSecurityConfig;
 
-
-
-public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    return new Class[] { HibernnateConfig.class,AdminSecurityConfig.class,WebSecurityConfig.class};
+    return new Class[] { HibernnateConfig.class, AdminSecurityConfig.class, WebSecurityConfig.class };
   }
 
   @Override

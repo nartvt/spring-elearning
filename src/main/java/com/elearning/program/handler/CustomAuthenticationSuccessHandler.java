@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler{
+public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-			Authentication authentication) throws IOException, ServletException {
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write("true");
-		response.getWriter().flush();
-		response.getWriter().close();
-	}
+  public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+      Authentication authentication) throws IOException, ServletException {
+    response.setContentType("application/json");
+    response.setCharacterEncoding("UTF-8");
+    response.getWriter().write("true");
+    response.getWriter().flush();
+    response.getWriter().close();
+  }
 }

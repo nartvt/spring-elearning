@@ -21,49 +21,47 @@ import com.elearning.program.handler.CustomAuthenticationSuccessHandler;
 @EnableWebSecurity
 @ComponentScan("com.elearning.program")
 @Order(2)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserDetailsService userDetailService;
+  @Autowired
+  private UserDetailsService userDetailService;
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+  @Bean
+  public PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.csrf()
-		.disable()
-		.authorizeRequests()
-		.antMatchers("/user/**")
-		.hasAnyRole("ADMIN","TEACHER","STUDENT")
-		.antMatchers("/teacher/**")
-//		.hasAnyRole("ADMIN")
-		.hasAnyRole("ADMIN","TEACHER")
-		.anyRequest()
-		.permitAll()
-		.and()
-		.formLogin()
-		.loginPage("/login")
-		.usernameParameter("email")
-		.passwordParameter("password")
-		.successHandler(new CustomAuthenticationSuccessHandler())
-		.failureHandler(new CustomAuthenticationFailureHandler())
-		.and()
-		.logout()
-		.logoutUrl("/logout")
-		.logoutSuccessUrl("/")
-		.deleteCookies("JSESSIONID")
-		.and()
-		.exceptionHandling()
-		.accessDeniedPage("/403");
-	}
+  protected void configure(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity.csrf().disable()
+        .authorizeRequests()
+        .antMatchers("/user/**")
+        .hasAnyRole("ADMIN", "TEACHER", "STUDENT")
+        .antMatchers("/teacher/**")
+        .hasAnyRole("ADMIN", "TEACHER")
+        .anyRequest()
+        .permitAll()
+        .and()
+        .formLogin()
+        .loginPage("/auth/login")
+        .usernameParameter("email")
+        .passwordParameter("password")
+        .successHandler(new CustomAuthenticationSuccessHandler())
+        .failureHandler(new CustomAuthenticationFailureHandler())
+        .and()
+        .logout()
+        .logoutUrl("/auth/logout")
+        .logoutSuccessUrl("/")
+        .deleteCookies("JSESSIONID")
+        .and()
+        .exceptionHandling()
+        .accessDeniedPage("/403");
+  }
 
-	public void configure(WebSecurity builder) throws Exception {
-		builder.ignoring().antMatchers("/statics/**");
-	}
+  public void configure(WebSecurity builder) throws Exception {
+    builder.ignoring().antMatchers("/statics/**");
+  }
 
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
-	}
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
+  }
 }

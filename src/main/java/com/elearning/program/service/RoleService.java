@@ -5,13 +5,13 @@ import com.elearning.program.dto.RoleDTO;
 import java.util.List;
 
 public interface RoleService {
-    List<RoleDTO> findAll();
+  List<RoleDTO> findAll();
 
-    boolean save(RoleDTO role);
+  boolean save(RoleDTO role);
 
-    RoleDTO findById(String id);
+  RoleDTO findById(String id);
 
-    boolean delete(String id);
+  boolean delete(String id);
 
-    boolean update(RoleDTO role);
+  boolean update(RoleDTO role);
 }
