@@ -4,61 +4,64 @@
 
 <tiles-definitions>
 
-    <!-- Base Definition -->
-    <definition name="base-default"
-                template="/WEB-INF/views/admin/layout/default.jsp">
-        <put-attribute name="title" value=""/>
-        <put-attribute name="header" value="/WEB-INF/views/admin/layout/header.jsp"/>
-        <put-attribute name="navbar" value="/WEB-INF/views/admin/layout/navbar.jsp"/>
-        <put-attribute name="sidebar" value="/WEB-INF/views/admin/layout/sidebar.jsp"/>
-        <put-attribute name="body" value=""/>
-        <put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jsp"/>
-    </definition>
+  <!-- Base Definition -->
+  <definition name="base-default" template="/WEB-INF/views/admin/layout/default.jsp">
+    <put-attribute name="title" value=""/>
+    <put-attribute name="header" value="/WEB-INF/views/admin/layout/header.jsp"/>
+    <put-attribute name="navbar" value="/WEB-INF/views/admin/layout/navbar.jsp"/>
+    <put-attribute name="sidebar" value="/WEB-INF/views/admin/layout/sidebar.jsp"/>
+    <put-attribute name="body" value=""/>
+    <put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jsp"/>
+  </definition>
 
-    <!-- ============== ROLE ADMIN ===========  -->
-    <definition name="roleList" extends="base-default">
-        <put-attribute name="title" value="Danh sách Role"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/role/index.jsp"/>
-    </definition>
+  <!-- ============== ROLE ADMIN ===========  -->
+  <definition name="roleList" extends="base-default">
+    <put-attribute name="title" value="Danh sách Role"/>
+    <put-attribute name="body" value="/WEB-INF/views/admin/role/index.jsp"/>
+  </definition>
 
-    <!-- ADD USER -->
-    <definition name="roleAdd" extends="base-default">
-        <put-attribute name="title" value="Thêm mới Role"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/role/add.jsp"/>
-    </definition>
+  <!-- ADD USER -->
+  <definition name="roleAdd" extends="base-default">
+    <put-attribute name="title" value="Thêm mới Role"/>
+    <put-attribute name="body" value="/WEB-INF/views/admin/role/add.jsp"/>
+  </definition>
 
-    <!-- ADD USER -->
-    <definition name="roleEdit" extends="base-default">
-        <put-attribute name="title" value="Cập nhật Role"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/role/edit.jsp"/>
-    </definition>
+  <!-- ADD USER -->
+  <definition name="roleEdit" extends="base-default">
+    <put-attribute name="title" value="Cập nhật Role"/>
+    <put-attribute name="body" value="/WEB-INF/views/admin/role/edit.jsp"/>
+  </definition>
 
-    <!-- ============== USER ADMIN ===========  -->
-    <!-- LIST USER -->
-    <definition name="userList" extends="base-default">
-        <put-attribute name="title" value="Danh sách người dùng"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/user/index.jsp"/>
-    </definition>
+  <!-- ============== USER ADMIN ===========  -->
+  <!-- LIST USER -->
+  <definition name="userList" extends="base-default">
+    <put-attribute name="title" value="Danh sách người dùng"/>
+    <put-attribute name="body" value="/WEB-INF/views/admin/user/index.jsp"/>
+  </definition>
 
-    <!-- ADD USER -->
-    <definition name="userAdd" extends="base-default">
-        <put-attribute name="title" value="Thêm mới người dùng"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/user/add.jsp"/>
-    </definition>
+  <!-- ADD USER -->
+  <definition name="userAdd" extends="base-default">
+    <put-attribute name="title" value="Thêm mới người dùng"/>
+    <put-attribute name="body" value="/WEB-INF/views/admin/user/add.jsp"/>
+  </definition>
 
-    <!-- ADD USER -->
-    <definition name="userEdit" extends="base-default">
-        <put-attribute name="title" value="Cập nhật người dùng"/>
-        <put-attribute name="body" value="/WEB-INF/views/admin/user/edit.jsp"/>
-    </definition>
+  <!-- ADD USER -->
+  <definition name="userEdit" extends="base-default">
+    <put-attribute name="title" value="Cập nhật người dùng"/>
+    <put-attribute name="body" value="/WEB-INF/views/admin/user/edit.jsp"/>
+  </definition>
 
-    <!-- Home Page -->
-    <definition name="homeIndex" extends="base-default">
-        <put-attribute name="title" value="Trang chủ"/>
-        <put-attribute name="body" value="/WEB-INF/views/home/index.jsp"/>
-    </definition>
-	<definition name="adminLogin" template="/WEB-INF/views/admin/account/login.jsp">  
-	
-   </definition>
+  <!-- Home Page -->
+  <definition name="homeIndex" extends="base-default">
+    <put-attribute name="title" value="Trang chủ"/>
+    <put-attribute name="body" value="/WEB-INF/views/home/index.jsp"/>
+  </definition>
+  <definition name="adminLogin" template="/WEB-INF/views/admin/account/login.jsp">
+  </definition>
+
+  <definition name="frmRegister" extends="base-default">
+    <put-attribute name="title" value="Dang Ky"/>
+    <put-attribute name="body" value="/WEB-INF/views/admin/account/regis_form.jsp"/>
+  </definition>
 
 </tiles-definitions>

@@ -18,3 +18,4 @@
 <script type="text/javascript" src="<c:url value="/statics/admin/assets/js/script.js" />"></script>
 <script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
 <script src="http://cdn.ckeditor.com/4.4.7/standard-all/adapters/jquery.js"></script>
+<script type="text/javascript" src="<c:url value='/statics/admin/js/sign_up.js'/>" ></script>

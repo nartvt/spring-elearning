@@ -21,7 +21,6 @@ public class AdminAuthenticationController {
 
   @PostMapping("/login")
   public String loginProcess(Model model) {
-
     return "adminLogin";
   }
 }
