@@ -3,6 +3,7 @@ package com.elearning.program.admin.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +20,9 @@ public class AdminAuthenticationController {
     return "adminLogin";
   }
 
-  @PostMapping("/login")
-  public String loginProcess(Model model) {
-    return "adminLogin";
+  @PostMapping("login")
+  public String loginProcess( Model model) {
+	  
+    return "redirect:  /";
   }
 }

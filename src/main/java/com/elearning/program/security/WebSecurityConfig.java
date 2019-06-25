@@ -2,7 +2,6 @@ package com.elearning.program.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,7 +18,6 @@ import com.elearning.program.handler.CustomAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan("com.elearning.program")
 @Order(2)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -44,14 +42,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .permitAll()
         .and()
         .formLogin()
-        .loginPage("/auth/login")
+//         .loginPage("/auth/login")
+        .loginProcessingUrl("/login")
         .usernameParameter("email")
         .passwordParameter("password")
         .successHandler(new CustomAuthenticationSuccessHandler())
         .failureHandler(new CustomAuthenticationFailureHandler())
         .and()
         .logout()
-        .logoutUrl("/auth/logout")
+        .logoutUrl("/logout")
         .logoutSuccessUrl("/")
         .deleteCookies("JSESSIONID")
         .and()

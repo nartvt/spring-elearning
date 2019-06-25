@@ -16,6 +16,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     response.getWriter().write("true");
+    response.setHeader("Location",request.getContextPath()+"/");
     response.getWriter().flush();
     response.getWriter().close();
   }

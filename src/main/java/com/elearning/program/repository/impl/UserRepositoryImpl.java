@@ -95,7 +95,7 @@ public class UserRepositoryImpl implements UserRepository {
 
   @Override
   public User findByEmail(String email) {
-    final String sqlString = "FROM users WHERE email:email";
+    final String sqlString = "FROM users WHERE email = :email";
     Session session = sessionFactory.getCurrentSession();
 
     Query<User> query = session.createQuery(sqlString, User.class);

@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ public class AuthController {
   private UserService userServiceImpl;
   
   @PostMapping("register")
-  public Object register(@Valid @RequestBody UserDTO user ,BindingResult errors) {
+  public Object register(@Validated @RequestBody UserDTO user ,BindingResult errors) {
     Map<String, String> map = new HashMap<String,String>();
     if(errors.hasErrors()) {
       map.put("success","false");

@@ -16,7 +16,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan("com.elearning.program")
 @Order(1)
 public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
