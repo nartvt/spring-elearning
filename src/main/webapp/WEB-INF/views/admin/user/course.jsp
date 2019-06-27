@@ -5,8 +5,7 @@
 <nav aria-label="breadcrumb">
 	<div class="container-fluid">
 		<ol class="breadcrumb bg-white mb-0 py-2">
-			<li class="breadcrumb-item"><a href="/"><i
-					class="fa fa-home mr-1"></i> Home</a></li>
+			<li class="breadcrumb-item"><a href="/"><i class="fa fa-home mr-1"></i> Home</a></li>
 			<li class="breadcrumb-item active" aria-current="page">My course</li>
 		</ol>
 	</div>
@@ -27,8 +26,8 @@
 		<div class="row">
 			<c:forEach begin="1" end="8">
 				<div class="col-md-3">
-					<a href="#" class="my-course-item"> <img
-						src='<c:url value="/statics/img/html-css.jpg" />' alt="html-css">
+					<a href="#" class="my-course-item"> <img src='<c:url value="/statics/img/html-css.jpg" />'
+							alt="html-css">
 						<h6 class="my-course-title">React - The Complete Guide (incl
 							Hooks, React Router, Redux)</h6>
 						<div class="my-course-desc">Java Python Android and C#

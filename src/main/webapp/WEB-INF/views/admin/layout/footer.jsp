@@ -1,20 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<script type="text/javascript" src="<c:url value="/statics/admin/bower_components/jquery/js/jquery.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/statics/admin/bower_components/jquery-ui/js/jquery-ui.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/statics/admin/bower_components/popper.js/js/popper.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/statics/admin/bower_components/bootstrap/js/bootstrap.min.js" />"></script>
-<!-- jquery slimscroll js -->
-<script type="text/javascript" src="<c:url value="/statics/admin/bower_components/jquery-slimscroll/js/jquery.slimscroll.js" />"></script>
-<!-- modernizr js -->
-<script type="text/javascript" src="<c:url value="/statics/admin/bower_components/modernizr/js/modernizr.js" />"></script>
-<script type="text/javascript" src="<c:url value="/statics/admin/bower_components/modernizr/js/css-scrollbars.js" />"></script>
-<script src="<c:url value="/statics/admin/assets/js/pcoded.min.js" />"></script>
-<script src="<c:url value="/statics/admin/assets/js/vartical-layout.min.js" />"></script>
-<script src="<c:url value="/statics/admin/assets/js/jquery.mCustomScrollbar.concat.min.js" />"></script>
-<!-- Custom js -->
-<script type="text/javascript" src="<c:url value="/statics/admin/assets/js/script.js" />"></script>
-<script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
-<script src="http://cdn.ckeditor.com/4.4.7/standard-all/adapters/jquery.js"></script>
+<footer class="py-4 mt-4 text-center border-top">
+    <span>Copyright © 2019 Cybersoft, Inc.</span>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+<script src="<c:url value="/statics/lib/popper.js/popper.min.js"/>"> </script> <script
+    src="<c:url value="/statics/lib/bootstrap/bootstrap.min.js"/>"> </script> <script
+    src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script src='<c:url value="/statics/js/account.js"/>'></script>

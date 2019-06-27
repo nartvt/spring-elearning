@@ -1,43 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+
+<tiles:importAttribute name="styles" />
+<tiles:importAttribute name="scripts" />
+
+<!doctype html>
 <html lang="en">
 
 <head>
-<title><tiles:getAsString name="title" /></title>
-<tiles:insertAttribute name="header" />
+    <title>
+        <tiles:getAsString name="title" />
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <tiles:insertAttribute name="header" />
+    <c:forEach items="${styles}" var="item">
+        <link rel="stylesheet" href='<c:url value="${ item }"/>'>
+    </c:forEach>
 </head>
 
 <body>
-	<div id="pcoded" class="pcoded">
-		<div class="pcoded-overlay-box"></div>
-		<div class="pcoded-container navbar-wrapper">
+    <tiles:insertAttribute name="navbar" />
 
-			<nav class="navbar header-navbar pcoded-header">
-				<!-- NAVBAR -->
-				<tiles:insertAttribute name="navbar" />
-			</nav>
-			<div class="pcoded-main-container">
-				<div class="pcoded-wrapper">
-					<!-- SIDE BAR -->
-					<tiles:insertAttribute name="sidebar" />
+    <tiles:insertAttribute name="body" />
 
-					<div class="pcoded-content">
-						<div class="pcoded-inner-content">
-							<!-- Main-body start -->
-							<div class="main-body">
-								<!-- BODY -->
-								<tiles:insertAttribute name="body" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<tiles:insertAttribute name="footer" />
+    <tiles:insertAttribute name="footer" />
+    <c:forEach items="${scripts}" var="item">
+        <script src='<c:url value="${ item }"/>'></script>
+    </c:forEach>
 </body>
-
-</html>

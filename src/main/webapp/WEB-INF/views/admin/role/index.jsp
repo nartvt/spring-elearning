@@ -7,9 +7,8 @@
 		<div class="col-md-12 mb-2">
 			<div class="page-header-breadcrumb">
 				<ul class="breadcrumb-title">
-					<li class="breadcrumb-item"><a href="/admin"> <i
-							class="feather icon-home"></i> Trang chủ
-					</a></li>
+					<li class="breadcrumb-item"><a href="/admin"> <i class="feather icon-home"></i> Trang chủ
+						</a></li>
 					<li class="breadcrumb-item"><a href="#!">Danh sách quyền</a></li>
 				</ul>
 			</div>
@@ -19,8 +18,7 @@
 			<div class="card px-3">
 				<div class="card-header px-0 pb-2">
 					<h2 class="text-uppercase text-center">Danh sách quyền</h2>
-					<a href="<c:url value="/admin/role/add"/>"
-						class="btn btn-sm btn-primary">Thêm mới</a>
+					<a href="<c:url value="/admin/role/add"/>" class="btn btn-sm btn-primary">Thêm mới Role</a>
 				</div>
 				<div class="card-block table-border-style">
 					<div class="table-responsive">
@@ -39,9 +37,9 @@
 										<th>${ loop.index + 1 }</th>
 										<td>${ item.name }</td>
 										<td>${ item.description }</td>
-										<td><a href="<c:url value="/admin/role/edit/${ item.id }"/>"
+										<td><a href="<c:url value="/admin/role/edit/${ item.roleId }" />"
 											class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
-											<a href="<c:url value="/admin/role/delete/${ item.id }"/>"
+											<a href="<c:url value="/admin/role/delete/${ item.roleId }" />"
 											class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
 										</td>
 									</tr>

@@ -16,12 +16,13 @@
      
   	<!-- ==================************ USER LAYOUT ********====================== -->
    <definition name="base-user"
-       template="/WEB-INF/views/layout/default.jsp">  
-       <put-attribute name="title" value="" />  
-       <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
-       <put-attribute name="navbar" value="/WEB-INF/views/layout/navbar.jsp" />
+        template="/WEB-INF/views/admin/layout/default.jsp">  
+      <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="/WEB-INF/views/admin/layout/header.jsp" />  
+       <put-attribute name="navbar" value="/WEB-INF/views/admin/layout/navbar.jsp" />
+       <put-attribute name="sidebar" value="/WEB-INF/views/admin/layout/sidebar.jsp" /> 
        <put-attribute name="body" value="" />  
-       <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+       <put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jsp" />  
        <put-list-attribute name="scripts" />
        <put-list-attribute name="styles" />
    </definition>
@@ -82,7 +83,7 @@
    <!-- USER PROFILE PAGE -->
    <definition name="userProfile" extends="base-user">  
        <put-attribute name="title" value="Thông tin tin cá nhân" />  
-       <put-attribute name="body" value="/WEB-INF/views/user/profile.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/admin/account/user/profile.jsp" />
        <put-list-attribute name="styles" inherit="true">
        		<add-attribute value="/statics/css/profile.css"/>
        </put-list-attribute>
@@ -92,7 +93,7 @@
    <!-- USER COURSE PAGE -->
    <definition name="userCourse" extends="base-user">
   <put-attribute name="title" value="Khóa học của tôi" />  
-       <put-attribute name="body" value="/WEB-INF/views/user/course.jsp" />
+       <put-attribute name="body" value="/WEB-INF/views/admin/account/user/course.jsp" />
        <put-list-attribute name="styles" inherit="true">
        		<add-attribute value="/statics/css/profile.css"/>
        </put-list-attribute>
