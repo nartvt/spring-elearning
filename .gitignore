@@ -10,5 +10,6 @@ buildNumber.properties
 .classpath
 .project
 .settings/
+src/main/webapp
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar

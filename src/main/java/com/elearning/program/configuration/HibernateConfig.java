@@ -19,41 +19,41 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @PropertySource("classpath:db.properties")
 public class HibernateConfig {
-	
-	@Autowired
-	private Environment environment;
-	
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
 
-	@Bean
-	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(environment.getProperty("mysql.driver"));
-		dataSource.setUrl(environment.getProperty("mysql.url"));
-		dataSource.setUsername(environment.getProperty("mysql.username"));
-		dataSource.setPassword(environment.getProperty("mysql.password"));
-		return dataSource;
-	}
-	
-	@Bean
-	public LocalSessionFactoryBean sessionFactory() {
-		LocalSessionFactoryBean bean = new LocalSessionFactoryBean();
-		bean.setDataSource(dataSource());
-		bean.setPackagesToScan(environment.getProperty("hibernate.package_scan"));
-		Properties properties = new Properties();
-		properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
-		properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
-		bean.setHibernateProperties(properties);
-		return bean;
-	}
-	
-	@Bean
-	public HibernateTransactionManager transactionManager() {
-		HibernateTransactionManager manager = new HibernateTransactionManager();
-		manager.setSessionFactory(sessionFactory().getObject());
-		return manager;
-	}
+  @Autowired
+  private Environment environment;
+
+  @Bean
+  public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+    return new PropertySourcesPlaceholderConfigurer();
+  }
+
+  @Bean
+  public DataSource dataSource() {
+    DriverManagerDataSource dataSource = new DriverManagerDataSource();
+    dataSource.setDriverClassName(environment.getProperty("mysql.driver"));
+    dataSource.setUrl(environment.getProperty("mysql.url"));
+    dataSource.setUsername(environment.getProperty("mysql.username"));
+    dataSource.setPassword(environment.getProperty("mysql.password"));
+    return dataSource;
+  }
+
+  @Bean
+  public LocalSessionFactoryBean sessionFactory() {
+    LocalSessionFactoryBean bean = new LocalSessionFactoryBean();
+    bean.setDataSource(dataSource());
+    bean.setPackagesToScan(environment.getProperty("hibernate.package_scan"));
+    Properties properties = new Properties();
+    properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+    properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+    bean.setHibernateProperties(properties);
+    return bean;
+  }
+
+  @Bean
+  public HibernateTransactionManager transactionManager() {
+    HibernateTransactionManager manager = new HibernateTransactionManager();
+    manager.setSessionFactory(sessionFactory().getObject());
+    return manager;
+  }
 }
