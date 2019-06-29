@@ -62,4 +62,19 @@ public class RoleServiceImpl implements RoleService {
     return roleRepository.save(role);
   }
 
+  @Override
+  public List<RoleDTO> findNotAdmin() {
+    List<Role> roleList = roleRepository.findRoleNotAdmin();
+    List<RoleDTO> roleDTOList = new ArrayList<RoleDTO>();
+    for (Role role : roleList) {
+      RoleDTO roleDTO = new RoleDTO();
+      roleDTO.setRoleId(role.getRoleId());
+      roleDTO.setName(role.getName());
+      roleDTO.setDescription(role.getDescription());
+      roleDTOList.add(roleDTO);
+    }
+    return roleDTOList;
+
+  }
+
 }

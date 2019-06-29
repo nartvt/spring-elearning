@@ -1,31 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
-prefix="c"%> <%@ taglib prefix="sec"
-uri="http://www.springframework.org/security/tags"%>
-
-<header class="container-fluid border-bottom">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%> <header
+  class="container-fluid border-bottom">
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <a class="navbar-brand" href='<c:url value=""/>'>Elearning</a>
-    <button
-      class="navbar-toggler d-lg-none"
-      type="button"
-      data-toggle="collapse"
-      data-target="#collapsibleNavId"
-      aria-controls="collapsibleNavId"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    ></button>
+    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
     <div class="collapse navbar-collapse row" id="collapsibleNavId">
       <div class="col-md-6">
-        <ul
-          class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex align-items-center justify-content-between"
-        >
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex align-items-center justify-content-between">
           <li class="nav-item mr-3">
             <div class="dropdown">
-              <a
-                class="btn btn-outline-light dropdown-toggle"
-                data-toggle="dropdown"
-              >
+              <a class="btn btn-outline-light dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-th"></i> <span class="ml-2">Categories</span>
               </a>
               <div class="dropdown-menu">
@@ -65,11 +51,7 @@ uri="http://www.springframework.org/security/tags"%>
           </li>
           <li class="nav-item w-100">
             <form class="input-group nav-search">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Search courses"
-              />
+              <input type="text" class="form-control" placeholder="Search courses" />
               <div class="input-group-append">
                 <button class="btn bg-white text-danger">
                   <i class="fa fa-search"></i>
@@ -85,34 +67,18 @@ uri="http://www.springframework.org/security/tags"%>
       <div class="col-md-5 d-flex justify-content-end">
         <!-- Nếu chưa đăng nhập thì show giao diện này  -->
         <sec:authorize access="!isAuthenticated()">
-          <button
-            class="btn btn-outline-secondary"
-            data-toggle="modal"
-            data-target="#loginModal"
-            >Login</button
-          >
-          <button
-            class="btn btn-danger ml-2"
-            data-toggle="modal"
-            data-target="#registerModal"
-            >Sign up</button
-          >
+          <button class="btn btn-outline-secondary" data-toggle="modal" data-target="#loginModal">Login</button>
+          <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#registerModal">Sign up</button>
         </sec:authorize>
         <!-- Nếu đăng nhập rồi thì show giao diện này -->
         <sec:authorize access="isAuthenticated()">
           <div class="dropdown">
-            <button
-              type="button"
-              class="btn btn-outline-primary dropdown-toggle"
-              data-toggle="dropdown"
-              >Nguyễn Văn Tèo</button
-            >
+            <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">Nguyễn Văn
+              Tèo</button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">Thông tin cá nhân</a>
               <a class="dropdown-item" href="#">Khóa học</a>
-              <a class="dropdown-item" href='<c:url value="/logout" />'
-                >Đăng xuất</a
-              >
+              <a class="dropdown-item" href='<c:url value="/logout" />'>Đăng xuất</a>
             </div>
           </div>
         </sec:authorize>
@@ -120,7 +86,6 @@ uri="http://www.springframework.org/security/tags"%>
     </div>
   </nav>
 </header>
-
 <!-- LOGIN MODAL -->
 <div class="modal" id="loginModal">
   <div class="modal-dialog">
@@ -128,11 +93,8 @@ uri="http://www.springframework.org/security/tags"%>
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Đăng nhập</h4>
-        <button type="button" class="close" data-dismiss="modal">
-          &times;
-        </button>
+        <button type="button" class="close" data-dismiss="modal"> &times; </button>
       </div>
-
       <!-- Modal body -->
       <div class="modal-body">
         <form action='<c:url value="/login" />' method="post" id="frmLogin">
@@ -150,7 +112,6 @@ uri="http://www.springframework.org/security/tags"%>
     </div>
   </div>
 </div>
-
 <!-- REGISTER MODAL -->
 <div class="modal" id="registerModal">
   <div class="modal-dialog">
@@ -158,47 +119,35 @@ uri="http://www.springframework.org/security/tags"%>
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Đăng ký</h4>
-        <button type="button" class="close" data-dismiss="modal">
-          &times;
-        </button>
+        <button type="button" class="close" data-dismiss="modal"> &times; </button>
       </div>
-
       <!-- Modal body -->
       <div class="modal-body">
-        <form
-          action='<c:url value="/auth/register" />'
-          method="post"
-          id="frmRegister"
-        >
+        <form action='<c:url value="/auth/register" />' method="post" id="frmRegister">
           <div class="form-group">
             <label for="fullname">Họ tên</label>
-            <input type="text" class="form-control" name="fullname" />
+            <input type="text" class="form-control" name="fullname" id="fullname"/>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" />
+            <input type="email" class="form-control" name="email" id="email"/>
           </div>
           <div class="form-group">
             <label for="password">Mật khẩu</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              name="password"
-            />
+            <input type="password" class="form-control" id="password" name="password" />
           </div>
           <div class="form-group">
-            <label for="confirm">Nhập lại mật khẩu</label>
-            <input type="password" class="form-control" name="confirm" />
+            <label for="passwordConfirm">Nhập lại mật khẩu</label>
+            <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm"/>
           </div>
           <div class="form-group">
-            <label for="roleId">Loại thành viên</label>
-            <select class="form-control" name="roleId">
+            <label for="personType">Loại thành viên</label>
+            <select class="form-control" name="personType" id="personType">
               <option>Giảng Viên</option>
               <option>Học Viên</option>
             </select>
           </div>
-          <button class="btn btn-primary">Đăng ký</button>
+          <button type="submit" class="btn btn-primary">Đăng ký</button>
         </form>
       </div>
     </div>

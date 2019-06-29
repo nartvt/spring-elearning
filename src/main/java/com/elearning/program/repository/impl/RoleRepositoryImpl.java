@@ -84,4 +84,19 @@ public class RoleRepositoryImpl implements RoleRepository {
     return false;
   }
 
+  @Override
+  public List<Role> findRoleNotAdmin() {
+    Session session = this.session();
+    try {
+      String sql = "FROM roles WHERE name <>:name";
+      Query<Role> query = session.createQuery(sql, Role.class);
+      query.setParameter("name","ROLE_ADMIN");
+      List<Role> roles = query.getResultList();
+      return roles;
+    } catch (RuntimeException e) {
+      e.printStackTrace();
+    }
+    return null;
+  }
+
 }

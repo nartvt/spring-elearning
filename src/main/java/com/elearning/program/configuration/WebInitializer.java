@@ -2,7 +2,10 @@ package com.elearning.program.configuration;
 
 import javax.servlet.Filter;
 
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.FrameworkServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import com.elearning.program.security.WebSecurityConfig;
 import com.elearning.program.security.AdminSecurityConfig;
@@ -29,5 +32,12 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     CharacterEncodingFilter filter = new CharacterEncodingFilter();
     filter.setEncoding("UTF-8");
     return new Filter[] { filter };
+  }
+
+  @Override
+  protected FrameworkServlet createDispatcherServlet(WebApplicationContext servletAppContext) {
+    DispatcherServlet servlet = new DispatcherServlet(servletAppContext);
+    servlet.setThrowExceptionIfNoHandlerFound(true);
+    return servlet;
   }
 }

@@ -69,6 +69,12 @@
    <definition name="adminLogin" template="/WEB-INF/views/admin/account/login.jsp">
    </definition> 
 
+   <definition name="error404" template="/WEB-INF/views/error/404.jsp">
+   </definition> 
+   
+       <!-- ADMIN LOGIN -->
+   <definition name="error500" template="/WEB-INF/views/error/500.jsp">
+   </definition> 
    <!--======= DEFAULT HOME  ========-->
    <!-- HOME PAGE -->
    <definition name="homeIndex" extends="base-user">  

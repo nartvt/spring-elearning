@@ -7,8 +7,8 @@
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-<script src="<c:url value="/statics/lib/popper.js/popper.min.js"/>"> </script> <script
-    src="<c:url value="/statics/lib/bootstrap/bootstrap.min.js"/>"> </script> <script
+<script src="<c:url value='/statics/lib/popper.js/popper.min.js'/>"> </script> <script
+    src="<c:url value='/statics/lib/bootstrap/bootstrap.min.js'/>"> </script> <script
     src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <script src='<c:url value="/statics/js/account.js"/>'></script>

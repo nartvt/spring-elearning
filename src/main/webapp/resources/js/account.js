@@ -1,4 +1,22 @@
 $(function () {
+  $.ajax({
+    url: $('#roleApi').val(),
+    type: 'GET',
+    dataType: 'JSON',
+    success: function (data) {
+      var html = ``;
+      data.forEach((item, index) => {
+        html += `<option value="${item.id}">${item.description}</option>`;
+      });
+      // console.log(html);
+      // replace select tag of html by option of javascription
+      $('#roleId').html(html);
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  });
+
   $('#frmLogin').submit(function () {
     console.log($(this).serialize());
     $.ajax({
@@ -28,7 +46,7 @@ $(function () {
 });
 
 // Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
-$("#frmRegister").validate({
+$('#frmRegister').validate({
   rules: {
     fullname: {
       required: true,
@@ -68,7 +86,7 @@ $("#frmRegister").validate({
     var obj = {
       fullname: $('#fullname').val(),
       email: $('#email').val(),
-      password: $('password').val(),
+      password: $('#password').val(),
       confirm: $('#confirm').val(),
       roleId:$('#roleId').val()
     }
@@ -80,6 +98,22 @@ $("#frmRegister").validate({
       dataType: 'json',
       success: function (data) {
         console.log(data);
+        if (data.success === 'true') {
+          swal({
+            title: "Thông báo!",
+            text: data.messages,
+            icon: "success",
+            button: "Đóng",
+          });
+          $('#frmRegister').modal('hide');
+        } else {
+          swal({
+            title: "Thông báo!",
+            text: data.messages,
+            icon: "error",
+            button: "Đóng",
+          });
+       }
       },
       error: function (err) {
         console.log(err);

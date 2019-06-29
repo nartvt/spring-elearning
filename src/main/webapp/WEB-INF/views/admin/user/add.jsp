@@ -76,7 +76,7 @@
 								<div class="form-group">
 									<button type="submit" class="btn btn-primary m-b-0">Lưu
 										lại</button>
-									<a href="<c:url value="/admin/user"/>" class="btn btn-secondary text-white">Quay
+									<a href="<c:url value='/admin/user'/>" class="btn btn-secondary text-white">Quay
 										lại</a>
 								</div>
 							</div>

@@ -14,4 +14,5 @@ public interface RoleService {
   boolean delete(String id);
 
   boolean update(RoleDTO role);
+  List<RoleDTO> findNotAdmin();
 }
