@@ -7,9 +7,9 @@
 		<div class="col-md-12 mb-2">
 			<div class="page-header-breadcrumb">
 				<ul class="breadcrumb-title">
-					<li class="breadcrumb-item"><a href="/admin"> <i
-							class="feather icon-home"></i> Trang chủ
-					</a></li>
+					<li class="breadcrumb-item">
+						<c:url value="/" var="action" />
+						<a href="${action}"> <i class="feather icon-home"></i> Trang chủ </a></li>
 					<li class="breadcrumb-item"><a href="#!">Cập nhật tài
 							khoản</a></li>
 				</ul>

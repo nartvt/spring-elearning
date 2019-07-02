@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.elearning.program.dto.RegisterDTO;
+import com.elearning.program.dto.UserDTO;
 import com.elearning.program.service.UserService;
 
 @RestController
@@ -22,7 +23,7 @@ public class AuthController {
   private UserService userServiceImpl;
   
   @PostMapping("register")
-  public Object register(@Validated @RequestBody RegisterDTO user ,BindingResult errors) {
+  public Object register(@Validated @RequestBody UserDTO user ,BindingResult errors) {
     Map<String, String> map = new HashMap<String,String>();
     if(errors.hasErrors()) {
       map.put("success","false");

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +43,7 @@ public class UserServiceImpl implements UserService {
     user.setUserId(userDTO.getUserId());
     user.setFullname(userDTO.getFullname());
     user.setEmail(userDTO.getEmail());
-    user.setPassword(userDTO.getPassword());
+    user.setPassword(BCrypt.hashpw(userDTO.getPassword(), BCrypt.gensalt(12)));    
     user.setPersonType(userDTO.getPersonType());
     user.setAvatar(userDTO.getAvatar());
     user.setPhone(userDTO.getPhone());

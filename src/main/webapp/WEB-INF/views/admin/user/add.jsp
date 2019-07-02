@@ -1,16 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="page-body">
+	pageEncoding="UTF-8"%> <%@ taglib uri="http://www.springframework.org/tags/form" prefix="mvc" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <div class="page-body">
 	<div class="row">
 		<div class="col-md-12 mb-2">
 			<div class="page-header-breadcrumb">
 				<ul class="breadcrumb-title">
-					<li class="breadcrumb-item"><a href="/admin"> <i class="feather icon-home"></i> Trang chủ
-						</a></li>
-					<li class="breadcrumb-item"><a href="#!">Thêm mới tài
-							khoản</a></li>
+					<li class="breadcrumb-item">
+						<c:url value="/" var="action" />
+						<a href="${action}">
+							<i class="feather icon-home"></i> Trang chủ </a></li>
+					<li class="breadcrumb-item"><a href="#!">Thêm mới tài khoản</a></li>
 				</ul>
 			</div>
 		</div>
@@ -74,8 +73,7 @@
 							</div>
 							<div class="col-12 mt-3">
 								<div class="form-group">
-									<button type="submit" class="btn btn-primary m-b-0">Lưu
-										lại</button>
+									<button type="submit" class="btn btn-primary m-b-0">Lưu lại</button>
 									<a href="<c:url value='/admin/user'/>" class="btn btn-secondary text-white">Quay
 										lại</a>
 								</div>

@@ -12,20 +12,22 @@
        <put-attribute name="sidebar" value="/WEB-INF/views/admin/layout/sidebar.jsp" /> 
        <put-attribute name="body" value="" />  
        <put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jsp" />  
+       <put-list-attribute name="scripts" />
+       <put-list-attribute name="styles" />
    </definition>  
      
   	<!-- ==================************ USER LAYOUT ********====================== -->
-   <definition name="base-user"
-        template="/WEB-INF/views/admin/layout/default.jsp">  
-      <put-attribute name="title" value="" />  
-       <put-attribute name="header" value="/WEB-INF/views/admin/layout/header.jsp" />  
-       <put-attribute name="navbar" value="/WEB-INF/views/admin/layout/navbar.jsp" />
-       <put-attribute name="sidebar" value="/WEB-INF/views/admin/layout/sidebar.jsp" /> 
-       <put-attribute name="body" value="" />  
-       <put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jsp" />  
-       <put-list-attribute name="scripts" />
-       <put-list-attribute name="styles" />
-   </definition>
+<!--    <definition name="base-user" -->
+<!--         template="/WEB-INF/views/admin/layout/default.jsp">   -->
+<!--       <put-attribute name="title" value="" />   -->
+<!--        <put-attribute name="header" value="/WEB-INF/views/admin/layout/header.jsp" />   -->
+<!--        <put-attribute name="navbar" value="/WEB-INF/views/admin/layout/navbar.jsp" /> -->
+<!--        <put-attribute name="sidebar" value="/WEB-INF/views/admin/layout/sidebar.jsp" />  -->
+<!--        <put-attribute name="body" value="" />   -->
+<!--        <put-attribute name="footer" value="/WEB-INF/views/admin/layout/footer.jsp" />   -->
+<!--        <put-list-attribute name="scripts" /> -->
+<!--        <put-list-attribute name="styles" /> -->
+<!--    </definition> -->
    
    <!-- ============== USER ADMIN ===========  -->
    <!-- LIST USER -->
@@ -77,7 +79,7 @@
    </definition> 
    <!--======= DEFAULT HOME  ========-->
    <!-- HOME PAGE -->
-   <definition name="homeIndex" extends="base-user">  
+   <definition name="homeIndex" extends="base-default">  
        <put-attribute name="title" value="Trang chủ" />  
        <put-attribute name="body" value="/WEB-INF/views/home/index.jsp" />
        <put-list-attribute name="styles" inherit="true">
@@ -87,7 +89,7 @@
    
    <!--======= USER PROFILE  ========-->
    <!-- USER PROFILE PAGE -->
-   <definition name="userProfile" extends="base-user">  
+   <definition name="userProfile" extends="base-default">  
        <put-attribute name="title" value="Thông tin tin cá nhân" />  
        <put-attribute name="body" value="/WEB-INF/views/admin/account/user/profile.jsp" />
        <put-list-attribute name="styles" inherit="true">
@@ -97,7 +99,7 @@
    
    <!--======= USER COURSE  ========-->
    <!-- USER COURSE PAGE -->
-   <definition name="userCourse" extends="base-user">
+   <definition name="userCourse" extends="base-default">
   <put-attribute name="title" value="Khóa học của tôi" />  
        <put-attribute name="body" value="/WEB-INF/views/admin/account/user/course.jsp" />
        <put-list-attribute name="styles" inherit="true">

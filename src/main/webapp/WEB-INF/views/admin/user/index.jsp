@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
-prefix="c"%>
-<div class="page-body">
+prefix="c"%> <div class="page-body">
   <div class="row">
     <div class="col-md-12 mb-2">
       <div class="page-header-breadcrumb">
         <ul class="breadcrumb-title">
           <li class="breadcrumb-item">
-            <a href="/admin"> <i class="feather icon-home"></i> Trang chủ </a>
-          </li>
+            <c:url value="/" var="action" />
+            <a href="${action}"> <i class="feather icon-home"></i> Trang chủ </a></li>
           <li class="breadcrumb-item"><a href="#!">Danh sách tài khoản</a></li>
         </ul>
       </div>
@@ -17,11 +16,7 @@ prefix="c"%>
       <div class="card px-3">
         <div class="card-header px-0 pb-2">
           <h2 class="text-uppercase text-center">Danh sách tài khoản</h2>
-          <a
-            href='<c:url value="/admin/user/add"/>'
-            class="btn btn-sm btn-primary"
-            >Thêm mới User</a
-          >
+          <a href='<c:url value="/admin/user/add"/>' class="btn btn-sm btn-primary">Thêm mới User</a>
         </div>
         <div class="card-block table-border-style">
           <div class="table-responsive">
@@ -42,17 +37,10 @@ prefix="c"%>
                     <td>${ item.fullname }</td>
                     <td>${ item.email }</td>
                     <td>${ item.phone }</td>
-                    <td
-                      ><a
-                        href='<c:url value="/admin/user/edit/${item.userId}"/>'
-                        class="btn btn-sm btn-info btn-round py-1 font-weight-bold"
-                        >Sửa</a
-                      >
-                      <a
-                        href='<c:url value="/admin/user/delete/${item.userId}"/>'
-                        class="btn btn-sm btn-danger btn-round py-1 font-weight-bold"
-                        >Xóa</a
-                      >
+                    <td><a href='<c:url value="/admin/user/edit/${item.userId}"/>'
+                        class="btn btn-sm btn-info btn-round py-1 font-weight-bold">Sửa</a>
+                      <a href='<c:url value="/admin/user/delete/${item.userId}"/>'
+                        class="btn btn-sm btn-danger btn-round py-1 font-weight-bold">Xóa</a>
                     </td>
                   </tr>
                 </c:forEach>
